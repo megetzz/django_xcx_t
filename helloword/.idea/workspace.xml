@@ -75,8 +75,13 @@
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mybloog" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog/templates" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PycharmProjects\dj_three\helloword\blog\templates" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -166,6 +171,7 @@
       <workItem from="1584317726737" duration="6872000" />
       <workItem from="1584366899624" duration="5013000" />
       <workItem from="1584413165143" duration="4567000" />
+      <workItem from="1584427288550" duration="6632000" />
     </task>
     <servers />
   </component>

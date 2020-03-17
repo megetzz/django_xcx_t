@@ -26,17 +26,15 @@
 <div>
     <div class="container page-body">
         <div class="col-md-9" rol="main">
-            <h2>{{ article.title }}</h2>
-            <p>{{article.content}}</p>
-        </div>
-        <div>
-            <h2>文章标题2</h2>
-            <p>文章内容</p>
-        </div>
-
+            {% for article in articles %}
+                <div>
+                <h2>文章标题:{{ article.title }}</h2>
+                <p>文章内容:{{ article.content }}</p>
+                <p>添加日期:{{ article.publist_date }}</p>
+                </div>
+            {% endfor %}
     </div>
+</div>
 </div>
 
 </body>
-
-</html>

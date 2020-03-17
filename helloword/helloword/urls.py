@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path,include
 from . import views
 
+# include()就是将其他地方的配置导入
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/',views.index,name='index'),
     path('app1/',include('app1.urls')),
+    # index -->blog
     path('index/',include('blog.urls'))
 ]

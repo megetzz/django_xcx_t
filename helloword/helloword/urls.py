@@ -16,12 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from . import views
-
+import blog.views
 # include()就是将其他地方的配置导入
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/',views.index,name='index'),
     path('app1/',include('app1.urls')),
     # index -->blog
-    path('index/',include('blog.urls'))
+    path('blog/',include('blog.urls')),
+    # path('')
 ]
+
+
+# 在生产环境下才起作用,在开发环境下没用
+handler404 = blog.views.not_find_page

@@ -79,6 +79,10 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PycharmProjects\dj_three\helloword\static" />
+      <recent name="D:\PycharmProjects\dj_three\helloword\blog\templates\blog" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PycharmProjects\dj_three\helloword\blog\templates" />
     </key>
@@ -171,7 +175,7 @@
       <workItem from="1584317726737" duration="6872000" />
       <workItem from="1584366899624" duration="5013000" />
       <workItem from="1584413165143" duration="4567000" />
-      <workItem from="1584427288550" duration="6632000" />
+      <workItem from="1584427288550" duration="20142000" />
     </task>
     <servers />
   </component>

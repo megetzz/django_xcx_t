@@ -20,5 +20,6 @@ import app1
 import juheapp
 # include()就是将其他地方的配置导入
 urlpatterns = [
-    path('jokes/',include('juheapp.urls'))
+    path('jokes/',include('juheapp.urls')),
+    path('apps/',include('juheapp.urls'))
 ]

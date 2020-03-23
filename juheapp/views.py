@@ -30,5 +30,8 @@ def testrequest(request):
 
 def image(request):
     f = open(r'D:\PycharmProjects\dj_three\helloword\static\abc.png','rb')
-    # return HttpResponse(content=f.read(),content_type='image/png')
     return FileResponse(f,content_type='image/png')
+    # return HttpResponse(content=f.read(),content_type='image/png')
+
+def apps(request):
+    return JsonResponse(['微信','支付宝'],safe=False)

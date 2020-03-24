@@ -6,6 +6,9 @@ urlpatterns = [
     path('juhe/',views.hellojuhe),
     path('test/',views.testrequest),
     path('image/',views.image),
-    path('',views.apps)
+    # 类的调用 as_view()
+    path('image1/',views.ImageView.as_view()),
+    path('imagetext/',views.ImageText.as_view()),
 
+    path('',views.apps),
 ]

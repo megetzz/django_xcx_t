@@ -1,0 +1,38 @@
+published:
+  - app:
+      category: life
+      application: weather
+      name: 天气
+      publish_date: 2020-03-24
+      url: /apps/weather
+      desc: this is a weather app.
+  - app:
+      category: life
+      application: backup-image
+      name: 图片备份
+      publish_date: 2020-03-24
+      url: /apps/imagetext
+      desc: this is a backup image app.
+  - app:
+      category: life
+      application: stock
+      name: 股票
+      publish_date: 2020-03-24
+      url: /apps/stock
+      desc: this is a stock app.
+  - app:
+      category: life
+      application: joke
+      name: 每日笑话
+      publish_date: 2020-03-24
+      url: /apps/joke
+      desc: this is a joke app.
+  - app:
+      category: life
+      application: constellation
+      name: 星座运势
+      publish_date: 2020-03-24
+      url: /apps/constellation
+      desc: this is a constellation app.
+develope:
+    - app: xxx

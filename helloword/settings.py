@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+APPEND_SLASH=False
 ROOT_URLCONF = 'helloword.urls'
 UPLOAD_PIC_DIR = os.path.join(BASE_DIR, 'resource', 'uploadpic')
 TEMPLATES = [
@@ -118,9 +118,11 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+os.environ['DJANGO_SETTINGS_MODULE']='helloword.settings'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static').replace('\\', '/'),
 )
+print('STATICFILES_DIRS:',STATICFILES_DIRS)
 STATIC_ROOT_SELF = os.path.join(BASE_DIR, 'static')

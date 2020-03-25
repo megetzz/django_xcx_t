@@ -70,10 +70,10 @@ def image(request):
 class ImageView(View,UtilMinxin):
 
     def get(self,request):
-        # filepath=os.path.join(settings.STATIC_ROOT_SELF,'abc.png')
-        # f=open(filepath,'rb')
-        # return FileResponse(f,content_type='image/jpg')
-        return render(request,'upfile.html')
+        filepath=os.path.join(settings.STATIC_ROOT_SELF,'abc.png')
+        f=open(filepath,'rb')
+        return FileResponse(f,content_type='image/jpg')
+        # return render(request,'upfile.html')
 
 
     def post(self,request):
@@ -110,9 +110,17 @@ class ImageView(View,UtilMinxin):
 
 
     def delete(self,request):
-        return HttpResponse('删除成功')
-
-
+        picname = request.GET.get('name')
+        print('picname:',picname)
+        picdir = settings.UPLOAD_PIC_DIR
+        pic_full_path = os.path.join(picdir,picname)
+        if not os.path.exists(pic_full_path):
+            return HttpResponse('图片不存在')
+        else:
+            # 删除
+            os.remove(pic_full_path)
+            return HttpResponse('图片删除成功')
+        # return HttpResponse('删除成功')
     # def put(self,request):
         # return HttpResponse('put请求')
         # return self.get(request)

@@ -10,7 +10,7 @@ import os
 from django.views import View
 from django.shortcuts import render
 # from utils import responseutil
-from utils.responseutil import ResponseMixin,XxxxxMixin
+from utils.responseutil import ResponseMixin,XxxxxMixin,UtilMinxin
 
 
 # fbv
@@ -54,7 +54,7 @@ def image(request):
     # print(filepath)
     # filepath = os.path.join(settings.BASE_DIR,'static','abc.png')
         filepath=os.path.join(settings.STATIC_ROOT_SELF,'abc.png')
-        print('--->',filepath)
+        # print('--->',filepath)
     # filepath=r'D:\PycharmProjects\dj_three\helloword\static\abc.png'
     # print('filepath:',filepath)
         f=open(filepath,'rb')
@@ -64,23 +64,60 @@ def image(request):
     else:
         return HttpResponse('res.method:'+request.method+'没有实现')
 
+# 4 11 单元
+
 # cbv 类试图
-class ImageView(View):
+class ImageView(View,UtilMinxin):
 
     def get(self,request):
-        filepath=os.path.join(settings.STATIC_ROOT_SELF,'abc.png')
-        f=open(filepath,'rb')
-        return FileResponse(f,content_type='image/jpg')
+        # filepath=os.path.join(settings.STATIC_ROOT_SELF,'abc.png')
+        # f=open(filepath,'rb')
+        # return FileResponse(f,content_type='image/jpg')
+        return render(request,'upfile.html')
+
 
     def post(self,request):
         # return HttpResponse('这儿是post请求')
-        return self.get(request)
+        # file_obj = request.FILES.get('file',None)
+        # print(file_obj.name)
+        # print(file_obj.size)
+        # print(dir(request))
+        files1 = request.FILES
+        # print('>>>>>>>>>>>>>>>>',files1)
+        # print('--->',files1)
+        # picdir = settings.UPLOAD_PIC_DIR
+        # files = request.FILES
+        # print(type(files))
+        # django.utils.datastructures.MultiValueDict
+        # 鸭子模式
+        # for key, value in files1.item:
+        picdir = settings.UPLOAD_PIC_DIR
 
-    def put(self,request):
+        for key, value in files1.items():
+            filename = os.path.join(picdir,key[-32:])
+            # UtilMinxin.savepic(key[-8:],value.read())
+            UtilMinxin.savepic(filename,value.read())
+            print('----->',key)
+            print('--->',value)
+        # return HttpResponse(filename)
+        return JsonResponse(UtilMinxin.wrapdic({'filename-':key[-32:]}))
+        # filename = key
+        # return self.get(request)
+        #     filename = os.path.join(picdir,key[-8:])
+
+        # return HttpResponse('ceshi')
+        # return HttpResponse(filename)
+
+
+    def delete(self,request):
+        return HttpResponse('删除成功')
+
+
+    # def put(self,request):
         # return HttpResponse('put请求')
-        return self.get(request)
+        # return self.get(request)
 
-# from utils import responseutil
+from utils import responseutil
 class ImageText(View,ResponseMixin,XxxxxMixin):
     # def get(self,request):
     #     filepath = os.path.join(settings.STATIC_ROOT_SELF, 'abc.png')

@@ -11,7 +11,11 @@ from django.views import View
 from django.shortcuts import render
 # from utils import responseutil
 from utils.responseutil import ResponseMixin,XxxxxMixin,UtilMinxin
-
+from django.shortcuts import render
+from utils import responseutil
+from utils.responseutil import UtilMixin
+# from myfirstproj import secret_settings
+# from juheapp.models import User
 
 # fbv
 def hellojuhe(request):
@@ -173,3 +177,275 @@ def apps(request):
     with open(filepath,'r',encoding='utf8') as f:
         res = yaml.load(f,Loader=yaml.FullLoader)
     return JsonResponse(res,safe=False)
+
+
+class CookieTest(View):
+
+    def get(self,request):
+        print(dir(request))
+        request.session['mykey']='我的值'
+        return JsonResponse({'key':'value'})
+
+
+# class CookieTest(View):
+#     """
+#     此视图对应的路由是 http://127.0.0.1:8000/api/v1.0/apps/testcookie/
+#     """
+
+    # def get(self, request):
+    #     # print(dir(request)) session
+    #     request.session['mykey'] = '我的值'
+    #     return JsonResponse({'key': "value"})
+
+
+# class CookieTest2(View):
+#     """
+#     此视图对应的路由是 http://127.0.0.1:8000/api/v1.0/apps/testcookie2/
+#     负责接收cookie
+#     """
+#
+#     def get(self, request):
+#         # request.session 是个字典
+#         # print(dir(request)) session
+#         print(request.session['mykey'])
+#         print(request.session.items())
+#         return JsonResponse({'key2': "value2"})
+#
+#
+# class Authorize(View):
+#     def get(self, request):
+#         return HttpResponse('此接口不支持get')
+#
+#     def post(self, request):
+#         print(request.body)  # b'{"code":"071D7x2705Z2nC1KQ6470hiA270D7x2F"}'
+#         bodystr = request.body.decode('utf-8')
+#         bodydict = json.loads(bodystr)
+#         code = bodydict.get('code')
+#         nickName = bodydict.get('nickName')
+#         print(code)
+#         print(nickName)
+#         appid = secret_settings.APPID
+#         secret = secret_settings.SECTER_KEY
+#         js_code = code
+#
+#         # 发起请求
+#         url = 'https://api.weixin.qq.com/sns/jscode2session?appid={}&secret={}&js_code={}&grant_type=authorization_code'.format(
+#             appid, secret, js_code)
+#         res = requests.get(url)
+#         # print(res.text)
+#         res_dict = json.loads(res.text)
+#         openid = res_dict.get('openid')
+#         if not openid:
+#             return HttpResponse('Authorize fail')
+#         # 给这个用户赋予了一些状态
+#         request.session['openid'] = openid
+#         request.session['is_authorized'] = True
+#
+#         # 将用户保存到 咱们的数据库
+#         if not User.objects.filter(openid=openid):
+#             newuser = User(openid=openid, nickname=nickName)
+#             newuser.save()
+#
+#         return HttpResponse('Authorize post ok')
+#
+#
+# # GET https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
+# def c2s(appid, code):
+#     return code2session(appid, code)
+#
+#
+# def code2session(appid, code):
+#     API = 'https://api.weixin.qq.com/sns/jscode2session'
+#     params = 'appid=%s&secret=%s&js_code=%s&grant_type=authorization_code' % \
+#              (secret_settings.APPID, secret_settings.SECTER_KEY, code)
+#     url = API + '?' + params
+#     response = requests.get(url=url, )
+#     data = json.loads(response.text)
+#     print(data)
+#     return data
+#
+#
+# def __authorize_by_code(request):
+#     '''
+#     使用wx.login的到的临时code到微信提供的code2session接口授权
+#
+#     post_data = {
+#         'encryptedData': 'xxxx',
+#         'appId': 'xxx',
+#         'sessionKey': 'xxx',
+#         'iv': 'xxx'
+#     }
+#     '''
+#     response = {}
+#     post_data = request.body.decode('utf-8')
+#     post_data = json.loads(post_data)
+#     app_id = post_data.get('appId').strip()
+#     nickname = post_data.get('nickname').strip()
+#     code = post_data.get('code').strip()
+#     print(code)
+#     print(app_id)
+#     if not (app_id and code):
+#         response['result_code'] = 2500
+#         response['message'] = 'authorized failed. need entire authorization data.'
+#         return JsonResponse(response, safe=False)
+#     try:
+#         data = c2s(app_id, code)
+#     except Exception as e:
+#         print(e)
+#         response['result_code'] = 2500
+#         response['message'] = 'authorized failed.'
+#         return JsonResponse(response, safe=False)
+#     openid = data.get('openid')
+#     if not openid:
+#         response['result_code'] = 2500
+#         response['message'] = 'authorization error.'
+#         return JsonResponse(response, safe=False)
+#     request.session['openid'] = openid
+#     request.session['is_authorized'] = True
+#
+#     print(openid)
+#     # User.objects.get(openid=openid) # 不要用get，用get查询如果结果数量 !=1 就会抛异常
+#     # 如果用户不存在，则新建用户
+#     if not User.objects.filter(openid=openid):
+#         new_user = User(openid=openid, nickname=nickname)
+#         new_user.save()
+#
+#     # message = 'user authorize successfully.'
+#     # response = wrap_json_response(data={}, code=ReturnCode.SUCCESS, message=message)
+#     return JsonResponse(response, safe=False)
+#
+#
+# def authorize(request):
+#     return __authorize_by_code(request)
+#
+#
+# # 判断是否已经授权
+# def already_authorized(request):
+#     is_authorized = False
+#     if request.session.get('is_authorized'):
+#         is_authorized = True
+#     return is_authorized
+#
+#
+# def get_user(request):
+#     if not already_authorized(request):
+#         raise Exception('not authorized request')
+#     openid = request.session.get('openid')
+#     user = User.objects.get(openid=openid)
+#     return user
+#
+#
+# class UserView(View):
+#     # 关注的城市、股票和星座
+#     def get(self, request):
+#         if not already_authorized(request):
+#             return JsonResponse({'key': '没登录认证'}, safe=False)
+#         openid = request.session.get('openid')
+#         user = User.objects.get(openid=openid)
+#         data = {}
+#         data['focus'] = {}
+#         data['focus']['city'] = json.loads(user.focus_cities)
+#         data['focus']['stock'] = json.loads(user.focus_stocks)
+#         data['focus']['constellation'] = json.loads(user.focus_constellations)
+#         return JsonResponse(data=data, safe=False)
+#         pass
+#
+#     def post(self, request):
+#         if not already_authorized(request):
+#             return JsonResponse({'key': '没登录认证'}, safe=False)
+#         openid = request.session.get('openid')
+#         user = User.objects.get(openid=openid)
+#
+#         received_body = request.body.decode('utf-8')
+#         received_body = eval(received_body)
+#
+#         cities = received_body.get('city')
+#         stocks = received_body.get('stock')
+#         constellations = received_body.get('constellation')
+#         #  不是追加的形式,是覆盖原有纪录
+#         # todo 这个bug 可以自己修复下
+#         # 前后端配合 更全面的逻辑,做更少的事,更健壮的事
+#         # 前端每次加载界面时,获取数据,和新添加的数据混合,保存时都post到后台
+#         # 后台只需要覆盖数据
+#
+#         user.focus_cities = json.dumps(cities)
+#         user.focus_stocks = json.dumps(stocks)
+#         user.focus_constellations = json.dumps(constellations)
+#         user.save()
+#
+#         return JsonResponse(data={'msg': '成功了'}, safe=False)
+#         pass
+#
+#
+# class Logout(View):
+#     def get(self, request):
+#         request.session.clear()
+#         return JsonResponse(data={'key': 'logout'}, safe=False)
+#
+#
+# class Status(View):
+#     # 判断是否已经登陆
+#     def get(self, request):
+#         print('call get_status function...')
+#         if already_authorized(request):
+#             data = {"is_authorized": 1}
+#         else:
+#             data = {"is_authorized": 0}
+#         return JsonResponse(data, safe=False)
+#
+# def weather(cityname):
+#     '''
+#     根据城市得到天气
+#     :param cityname: 城市名字
+#     :return: 返回实况天气
+#     '''
+#     key = 'a82288afe55b5d454485d08bd69e5c60'
+#     api = 'http://apis.juhe.cn/simpleWeather/query'
+#     params = 'city=%s&key=%s' % (cityname[:-1], key)
+#     url = api + '?' + params
+#     print(url)
+#     response = requests.get(url=url)
+#     data = json.loads(response.text)
+#     print(data)
+#     result = data.get('result')
+#     realtime = result.get('realtime')
+#     response = {}
+#     response['temperature'] = realtime.get('temperature')
+#     response['wid'] = realtime.get('wid')
+#     response['power'] = realtime.get('power')
+#     response['humidity'] = realtime.get('humidity')
+#     # response = {}
+#     # response['temperature'] = 'temperature'
+#     # response['win'] = 'win'
+#     # response['humidity'] = 'humidity'
+#     return response
+#
+#
+# class Weather(View):
+#     def get(self, request):
+#         if not already_authorized(request):
+#             response = {'key':2500}
+#         else:
+#             data = []
+#             openid = request.session.get('openid')
+#             user = User.objects.filter(openid=openid)[0]
+#             cities = json.loads(user.focus_cities)
+#             for city in cities:
+#                 result = weather(city.get('city'))
+#                 result['city_info'] = city
+#                 data.append(result)
+#             response = data
+#         return JsonResponse(data=response, safe=False)
+#
+#     def post(self, request):
+#         data = []
+#         received_body = request.body.decode('utf-8')
+#         received_body = json.loads(received_body)
+#         print(received_body)
+#         cities = received_body.get('cities')
+#         for city in cities:
+#             result = weather(city.get('city'))
+#             result['city_info'] = city
+#             data.append(result)
+#         response_data = {'key':'post..'}
+#         return JsonResponse(data=response_data, safe=False)

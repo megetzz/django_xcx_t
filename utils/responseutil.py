@@ -55,3 +55,22 @@ class UtilMinxin():
         if not res_dict.get('codedes'):
             res_dict['codedes'] = Code.des(res_dict.get('code'))
         return res_dict
+
+class UtilMixin():
+    @staticmethod
+    def savepic(filename, content):
+        with open(filename, 'wb') as f:
+            f.write(content)
+
+    @staticmethod
+    def wrapdic(res_dict):
+        """
+        返回状态码以及结果,1000 default
+        :param res_dict: 需要包裹的返回值字典类型
+        :return: 装饰之后的dict
+        """
+        if not res_dict.get('code'):
+            res_dict['code'] = Code.SUCCESS
+        if not res_dict.get('codedes'):
+            res_dict['codedes'] = Code.des(res_dict.get('code'))
+        return res_dict

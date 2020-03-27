@@ -9,6 +9,7 @@ urlpatterns = [
     # 类的调用 as_view()
     path('image1/',views.ImageView.as_view()),
     path('imagetext/',views.ImageText.as_view()),
+    path('testcookie/',views.CookieTest.as_view()),
 
     path('',views.apps),
 ]

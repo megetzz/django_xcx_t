@@ -14,8 +14,9 @@ from utils.responseutil import ResponseMixin,XxxxxMixin,UtilMinxin
 from django.shortcuts import render
 from utils import responseutil
 from utils.responseutil import UtilMixin
-# from myfirstproj import secret_settings
-# from juheapp.models import User
+import  json
+from helloword import secret_settings
+from juheapp.models import User
 
 # fbv
 def hellojuhe(request):
@@ -33,13 +34,13 @@ def testrequest(request):
     print('客户端信息---->', request.META)
     print('get请求参数-->', request.GET)
     print('请求头---->', request.headers)
-    print('cookies---->', request.COOKIES)
+    print('cookie---->', request.COOKIES)
     # return HttpResponse('========')
     return JsonResponse({'请求方法---->': request.method.__str__(),
                          '客户端信息---->': request.META.__str__(),
                          'get请求参数-->': request.GET.__str__(),
                          '请求头---->': request.headers.__str__(),
-                         'cookies---->': request.COOKIES.__str__()
+                         'cookie---->': request.COOKIES.__str__()
                          })
 
 # def image(request):
@@ -178,13 +179,74 @@ def apps(request):
         res = yaml.load(f,Loader=yaml.FullLoader)
     return JsonResponse(res,safe=False)
 
-
+# 获取cookie 并保存到本地
 class CookieTest(View):
-
+    """
+    此视图对应的路由是http://127.0.0.1:8000/api/v1.0/apps/testcookie/
+    """
     def get(self,request):
-        print(dir(request))
+        # print(dir(request))
         request.session['mykey']='我的值'
         return JsonResponse({'key':'value'})
+
+# 读取本地cookie并发送cookie
+class CookieTest2(View):
+    """
+    此视图对应的路由是http://127.0.0.1:8000/api/v1.0/apps/testcookie2/
+    负责接受cookie
+    """
+    def get(self,request):
+        # request.session  字典
+        # print(request.session['mykey'])
+        print(request.session['mykey'])
+        print(request.session.items())
+        return JsonResponse({'key2':'value2'})
+
+# 认证登录
+class Authorize(View):
+    def get(self,request):
+        return HttpResponse('此接口不支持get')
+
+    def post(self,request):
+        print(request.body)
+        #b'{"code":"033eAyih1vHypv0gH1hh1Neqih1eAyiS"}'
+        bodystr = request.body.decode('utf-8')
+        bodydict = json.loads(bodystr)
+        code = bodydict.get('code')
+        nickName = bodydict.get('nickName')
+        print('code--->',code)
+        print('nickName---->',nickName)
+        appid = secret_settings.APPID
+        secret = secret_settings.SECTRY_KEY
+        js_code = code
+        # 发起请求
+        url = 'https://api.weixin.qq.com/sns/jscode2session?appid={}&secret={}&js_code={}&grant_type=authorization_code'.format(appid,secret,js_code)
+        res = requests.get(url)
+        # print(res.text)
+
+        res_dict = json.loads(res.text)
+        openid = res_dict.get('openid')
+        if not openid:
+            return HttpResponse('Authorize fail')
+        # 给用户赋予状态 session和其他东西关联
+        request.session['openid'] = openid
+        request.session['id_authorized'] = True
+
+
+        # 将用户保存到本地 的 数据库
+        if not User.objects.filter(openid=openid):
+            newuser = User(openid=openid, nickName=nickName)
+            newuser.save()
+
+        return HttpResponse('Authorize post ok')
+
+# 请求地址
+# https://api.weixin.qq.com/sns/jscode2session
+# ?appid=APPID
+# &secret=SECRET
+# &js_code=JSCODE
+# &grant_type=authorization_code
+
 
 
 # class CookieTest(View):

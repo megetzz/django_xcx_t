@@ -10,6 +10,8 @@ urlpatterns = [
     path('image1/',views.ImageView.as_view()),
     path('imagetext/',views.ImageText.as_view()),
     path('testcookie/',views.CookieTest.as_view()),
+    path('testcookie2/',views.CookieTest2.as_view()),
+    path('authorize/',views.Authorize.as_view()),
 
     path('',views.apps),
 ]

@@ -202,6 +202,14 @@ class CookieTest2(View):
         print(request.session.items())
         return JsonResponse({'key2':'value2'})
 
+# 请求地址
+# https://api.weixin.qq.com/sns/jscode2session
+# ?appid=APPID
+# &secret=SECRET
+# &js_code=JSCODE
+# &grant_type=authorization_code
+
+
 # 认证登录
 class Authorize(View):
     def get(self,request):
@@ -240,12 +248,7 @@ class Authorize(View):
 
         return HttpResponse('Authorize post ok')
 
-# 请求地址
-# https://api.weixin.qq.com/sns/jscode2session
-# ?appid=APPID
-# &secret=SECRET
-# &js_code=JSCODE
-# &grant_type=authorization_code
+
 
 
 

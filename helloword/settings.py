@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'helloword.wsgi.application'
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'test',
 #         'USER': 'root',
-#         'PASSWORD': '258000',
+#         'PASSWORD': '',
 #         'HOST': '127.0.0.1',
 #         'PORT': '3306',
 #     }
@@ -99,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'test',
         'USER': 'root',
-        'PASSWORD': '258000',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }

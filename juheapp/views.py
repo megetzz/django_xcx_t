@@ -227,7 +227,7 @@ class Authorize(View):
         appid = secret_settings.APPID
         secret = secret_settings.SECTRY_KEY
         js_code = code
-        # 发起请求
+        # 发起请求  从微信发过来的额
         url = 'https://api.weixin.qq.com/sns/jscode2session?appid={}&secret={}&js_code={}&grant_type=authorization_code'.format(appid,secret,js_code)
         res = requests.get(url)
         # print(res.text)
@@ -481,6 +481,7 @@ def authorize(request):
 
 
 # 判断是否已经授权
+# 从session得出字段
 def already_authorized(request):
     is_authorized = False
     if request.session.get('is_authorized'):
@@ -538,30 +539,90 @@ class UserView(View):
         return JsonResponse(data={'msg': '成功了'}, safe=False)
 
 #
-#
+#注销
 class Logout(View):
     def get(self, request):
+        # 清除session
         request.session.clear()
         return JsonResponse(data={'key': 'logout'}, safe=False)
 #
+#获取状态
+class Status(View):
+    # 判断是否已经登陆
+    def get(self, request):
+        print('call get_status function...')
+        if already_authorized(request):
+            # 1 成功
+            data = {"is_authorized": 1}
+        else:
+            data = {"is_authorized": 0}
+        return JsonResponse(data, safe=False)
+
+def weather(cityname):
+    '''
+    根据城市得到天气
+    :param cityname: 城市名字
+    :return: 返回实况天气
+    '''
+    key =  secret_settings.KEY
+    api = 'http://apis.juhe.cn/simpleWeather/query'
+    params = 'city=%s&key=%s' % (cityname[:-1], key)
+    url = api + '?' + params
+    print(url)
+    response = requests.get(url=url)
+    data = json.loads(response.text)
+    print(data)
+    result = data.get('result')
+    realtime = result.get('realtime')
+    response = {}
+    response['temperature'] = realtime.get('temperature')
+    response['wid'] = realtime.get('wid')
+    response['power'] = realtime.get('power')
+    response['humidity'] = realtime.get('humidity')
+    # response = {}
+    # response['temperature'] = 'temperature'
+    # response['win'] = 'win'
+    # response['humidity'] = 'humidity'
+    return response
 #
-# class Status(View):
-#     # 判断是否已经登陆
-#     def get(self, request):
-#         print('call get_status function...')
-#         if already_authorized(request):
-#             data = {"is_authorized": 1}
-#         else:
-#             data = {"is_authorized": 0}
-#         return JsonResponse(data, safe=False)
-#
+
+class Weather(View):
+    def get(self, request):
+        if not already_authorized(request):
+            response = {'key':2500}
+        else:
+            data = []
+            openid = request.session.get('openid')
+            user = User.objects.filter(openid=openid)[0]
+            cities = json.loads(user.focus_cities)
+            for city in cities:
+                result = weather(city.get('city'))
+                result['city_info'] = city
+                data.append(result)
+            response = data
+        return JsonResponse(data=response, safe=False)
+
+
+    def post(self, request):
+        data = []
+        received_body = request.body.decode('utf-8')
+        received_body = json.loads(received_body)
+        print(received_body)
+        cities = received_body.get('cities')
+        for city in cities:
+            result = weather(city.get('city'))
+            result['city_info'] = city
+            data.append(result)
+        response_data = data
+        return JsonResponse(data=response_data, safe=False)
+
 # def weather(cityname):
 #     '''
 #     根据城市得到天气
 #     :param cityname: 城市名字
 #     :return: 返回实况天气
 #     '''
-#     key = 'a82288afe55b5d454485d08bd69e5c60'
+#     key = 'e8cf055e940444f46092ac9c2abc6db5'
 #     api = 'http://apis.juhe.cn/simpleWeather/query'
 #     params = 'city=%s&key=%s' % (cityname[:-1], key)
 #     url = api + '?' + params
@@ -582,7 +643,7 @@ class Logout(View):
 #     # response['humidity'] = 'humidity'
 #     return response
 #
-#
+# #
 # class Weather(View):
 #     def get(self, request):
 #         if not already_authorized(request):

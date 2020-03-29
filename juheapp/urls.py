@@ -13,6 +13,9 @@ urlpatterns = [
     path('testcookie2/',views.CookieTest2.as_view()),
     path('authorize/',views.Authorize.as_view()),
     path('user/',views.UserView.as_view()),
+    path('logout/',views.Logout.as_view()),
+    path('status/',views.Status.as_view()),
+    path('weather/',views.Weather.as_view()),
 
     path('',views.apps),
 ]

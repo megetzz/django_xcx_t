@@ -12,6 +12,7 @@ urlpatterns = [
     path('testcookie/',views.CookieTest.as_view()),
     path('testcookie2/',views.CookieTest2.as_view()),
     path('authorize/',views.Authorize.as_view()),
+    path('user/',views.UserView.as_view()),
 
     path('',views.apps),
 ]

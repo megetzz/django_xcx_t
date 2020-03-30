@@ -2,6 +2,36 @@ from django.db import models
 
 # Create your models here.
 
+class App(models.Model):
+    appid = models.CharField(primary_key=True,max_length=128)
+    category = models.CharField(max_length=128)
+    application = models.CharField(max_length=128)
+    name = models.CharField(max_length=128)
+    publish_date = models.DateField() #发布时间
+    url = models.CharField(max_length=128) #请求链接
+    desc = models.TextField()
+
+
+    def to_dict(self):
+        return {
+            'appid':self.appid,
+            'category':self.category,
+            'application':self.application,
+            'name':self.name,
+            'publish_date':self.publish_date,
+            'url':self.url,
+            'desc':self.desc
+        }
+
+
+    def __str__(self):
+        return str(self.to_dict())
+
+    def __repr__(self):
+        return str(self.to_dict())
+
+
+
 class User(models.Model):
     openid =models.CharField(max_length=64,unique=True)
     # 昵称
@@ -13,10 +43,15 @@ class User(models.Model):
     # 星座
     focus_stocks = models.TextField(default='[]')
 
-    def __str__(self):
-        return self.nickName
+    # col1 = models.CharField(max_length=8,default='测试')
+
+    menu = models.ManyToManyField(App)
+
+    # def __str__(self):
+    #     return self.nickName
 
     class Meta:
+
         """
         meta:  元   描绘类本身的类
         此处描绘user本身的属性

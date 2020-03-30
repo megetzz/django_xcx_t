@@ -1,20 +1,133 @@
-from django.test import TestCase
-
-# Create your tests here.
-
-
-# 先配置django的环境
-import os
 import django
-# dajngo黄静的模型
+import os
+import time,statistics
 os.environ['DJANGO_SETTINGS_MODULE'] = 'helloword.settings'
 django.setup()
+class TimeTestTool:
+    # 计算函数运行的时间
+    @classmethod
+    def calc_func_time(cls, func):
+        start = time.perf_counter()
+        func()
+        end = time.perf_counter()
+        return end - start
+
+    # 统计时间
+    @classmethod
+    def statistic_run_time(cls, func, n):
+        data = [cls.calc_func_time(func) for i in range(n)]
+        mean = statistics.mean(data)
+        sd = statistics.stdev(data, xbar=mean)
+        return [data, mean, sd, max(data), min(data)]
+
+    # 对比
+    @classmethod
+    def compare(cls, func1, func2, n):
+        result1 = cls.statistic_run_time(func1, n)
+        result2 = cls.statistic_run_time(func2, n)
+        print('对比\t 没有预加载 \t 预加载')
+        print('平均值\t', result1[1], '\t', result2[1])
 
 from juheapp.models import User,App
 
+# 懒加载
+def lazy_load():
+    for user in User.objects.all():
+        print(user.menu.all())
 
-user1 = User.objects.all()[0]
-print(user1.menu)
+# 预加载
+def pre_load():
+    for user in User.objects.prefetch_related('menu'):
+        print(user.menu.all())
+
+
+TimeTestTool.compare(lazy_load,pre_load,1000)
+
+
+
+# from django.test import TestCase
+#
+# # Create your tests here.
+#
+#
+# # 先配置django的环境
+# import os
+# import django
+#
+# # dajngo黄静的模型
+# django.setup()
+#
+# from juheapp.models import User,App
+# # os.environ['DJANGO_SETTINGS_MODULE'] = 'helloword.settings'
+#
+#
+# user1 = User.objects.all()[0]
+# print(user1.menu)
+#
+# import os
+# import time
+# import django
+# import random
+# import hashlib
+#
+# import time, statistics
+#
+# from django.utils import timezone
+#
+# # from backend import settings
+#
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE','backend.settings')
+# django.setup()
+#
+# # from . import lazy_load
+#
+#
+# class TimeTestTool:
+#     # 计算函数运行时间
+#     @classmethod
+#     def calc_func_time(cls,func):
+#         start = time.perf_counter()
+#         func()
+#         end = time.perf_counter()
+#         return end - start
+#
+#
+#     # 统计时间
+#     @classmethod
+#     def statistic_run_time(cls,func,n):
+#         data = [cls.calc_func_time(func)for i in range(n)]
+#         mean = statistics.mean(data)
+#         sd = statistics.stdev(data,xbar=mean)
+#         return [data, mean, sd, max(data), min(data)]
+#
+#
+#     # 对比
+#     @classmethod
+#     def compare(cls,func1,func2,n):
+#         result1 = cls.statistic_run_time(func1, n)
+#         result2 = cls.statistic_run_time(func2, n)
+#         print('对比\t 没有预加载 \t 预加载')
+#         print('平均值\t', result1[1], '\t',result2[1])
+#
+#
+#
+#
+# # 懒加载
+# def lazy_load():
+#     for user in  User.objects.all():
+#         print(user.menu.all())
+#
+# # 预加载
+# def pre_load():
+#     for user in User.objects.prefetch_related('menu'):
+#         print(user.menu.all)
+#
+# TimeTestTool.compare(lazy_load,pre_load,1000)
+
+
+# if __name__ == '__main__':
+#     TimeTestTool.compare(lazy_load.lazy_load,lazy_load.pre_load,100)
+
 
 
 # import yaml

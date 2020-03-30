@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'helloword.wsgi.application'
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'test',
 #         'USER': 'root',
-#         'PASSWORD': '258000',
+#         'PASSWORD': '',
 #         'HOST': '127.0.0.1',
 #         'PORT': '3306',
 #     }
@@ -98,7 +98,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'test',
         'USER': 'root',
-        'PASSWORD': '258000',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -149,4 +149,57 @@ STATICFILES_DIRS = (
 STATIC_ROOT_SELF = os.path.join(BASE_DIR, 'static')
 
 # SESSION_COOKIE_AGE session 过期时间
-# SESSION_COOKIE_AGE = 60*1*24
+SESSION_COOKIE_AGE = 60*1*24
+
+
+# 日志
+LOGGING = {
+    'version':1,
+    # 格式器
+    'formatters':{
+        'standard':{
+            'format': '%(asctime)s [%(threadName)s: %(thread)d]'
+                      '%(pathname)s:%(funcName)s:%(lineno)d %(levelname)s - %(message)s'
+        },
+        'myformat':{
+            'format': '%(asctime)s '
+                      '%(pathname)s:%(funcName)s:%(lineno)d %(levelname)s - %(message)s'
+
+        }
+    },
+    # 过滤器
+    'filters':{
+        'xxx':{
+            '()':'ops.XXXFilter'
+        }
+    },
+    'handlers':{
+    #     控制台输出
+        'consile_handler':{
+            'level':'INFO',
+            'class':'logging.StreamHandler',
+            'formatter':'standard'
+        },
+    # 输出到文件
+        'file_handler':{
+            # DEBUG  Warning ERROR
+            'level':'WARNING',
+            'class':'logging.handlers.RotatingFileHandler',
+            #todo  可能日志不存在
+            'filename':os.path.join(BASE_DIR,'ops.log'),
+            'maxBytes':100*1024*1024,
+            'backupCount':3,
+            'formatter':'standard',
+            'encoding':'utf-8'
+        }
+    },
+    'loggers':{
+        'django':{
+            'handlers':['consile_handler','file_handler'],
+            'filters':['xxx'],
+            'level':'DEBUG'
+      }
+    },
+
+
+    }

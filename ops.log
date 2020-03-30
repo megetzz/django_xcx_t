@@ -1,0 +1,2 @@
+2020-03-30 18:53:10,092 [MainThread: 13492]D:/PycharmProjects/dj_three/helloword/testlog.py:logdemo:16 WARNING - I am  warning log Info
+2020-03-30 18:53:10,092 [MainThread: 13492]D:/PycharmProjects/dj_three/helloword/testlog.py:logdemo:18 ERROR - I am  error log Info

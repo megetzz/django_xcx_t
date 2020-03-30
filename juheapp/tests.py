@@ -266,5 +266,11 @@ def getfilter2():
     # users = User.objects.filter(~Q(nickName__contains='test'))
     print(users)
 
-
 # getfilter2()
+
+from django.db.models import F
+
+user = User.objects.get(openid='hfJ5YZf6ILJKUFwd0pmRvzFPPvXsWwTU')
+user.nickName = F('nickName')+'1'
+user.save()
+print(user.nickName)

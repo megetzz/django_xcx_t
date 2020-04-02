@@ -1,2 +1,274 @@
 2020-03-30 18:53:10,092 [MainThread: 13492]D:/PycharmProjects/dj_three/helloword/testlog.py:logdemo:16 WARNING - I am  warning log Info
 2020-03-30 18:53:10,092 [MainThread: 13492]D:/PycharmProjects/dj_three/helloword/testlog.py:logdemo:18 ERROR - I am  error log Info
+2020-03-30 18:59:35,920 [MainThread: 7876]D:/PycharmProjects/dj_three/helloword/testlog.py:logdemo:16 WARNING - I am  warning log Info
+2020-03-30 18:59:35,920 [MainThread: 7876]D:/PycharmProjects/dj_three/helloword/testlog.py:logdemo:18 ERROR - I am  error log Info
+2020-04-02 17:10:44,521 [Thread-1: 22588]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 WARNING - Not Found: /
+2020-04-02 17:10:44,522 [Thread-1: 22588]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 WARNING - "GET / HTTP/1.1" 404 2243
+2020-04-02 17:16:43,713 [Thread-1: 3640]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 WARNING - Not Found: /
+2020-04-02 17:16:43,714 [Thread-1: 3640]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 WARNING - "GET / HTTP/1.1" 404 2243
+2020-04-02 17:18:22,000 [Thread-1: 3640]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 WARNING - Not Found: /
+2020-04-02 17:18:22,001 [Thread-1: 3640]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 WARNING - "GET / HTTP/1.1" 404 2243
+2020-04-02 18:49:45,448 [Thread-1: 4940]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 ERROR - Internal Server Error: /admin/juheapp/user/add/
+Traceback (most recent call last):
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\sites.py", line 231, in inner
+    return view(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1638, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1522, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1565, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "D:\PycharmProjects\dj_three\helloword\juheapp\admin.py", line 20, in save_model
+    return super(UserAdmin,self).save_model()
+TypeError: save_model() missing 4 required positional arguments: 'request', 'obj', 'form', and 'change'
+2020-04-02 18:49:45,452 [Thread-1: 4940]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 ERROR - "POST /admin/juheapp/user/add/ HTTP/1.1" 500 116538
+2020-04-02 18:53:56,609 [Thread-1: 13752]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 ERROR - Internal Server Error: /admin/juheapp/user/add/
+Traceback (most recent call last):
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\mysql\base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '' for key 'openid'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\sites.py", line 231, in inner
+    return view(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1638, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1522, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1565, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "D:\PycharmProjects\dj_three\helloword\juheapp\admin.py", line 20, in save_model
+    return super(UserAdmin,self).save_model(request, obj, form, change)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1081, in save_model
+    obj.save()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\base.py", line 746, in save
+    force_update=force_update, update_fields=update_fields)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\base.py", line 784, in save_base
+    force_update, using, update_fields,
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\base.py", line 887, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\base.py", line 926, in _do_insert
+    using=using, raw=raw,
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\sql\compiler.py", line 1384, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\mysql\base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1062, "Duplicate entry '' for key 'openid'")
+2020-04-02 18:53:56,618 [Thread-1: 13752]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 ERROR - "POST /admin/juheapp/user/add/ HTTP/1.1" 500 264140
+2020-04-02 18:54:22,037 [Thread-1: 13752]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 ERROR - Internal Server Error: /admin/juheapp/user/add/
+Traceback (most recent call last):
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\mysql\base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '' for key 'openid'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\sites.py", line 231, in inner
+    return view(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1638, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1522, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1565, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "D:\PycharmProjects\dj_three\helloword\juheapp\admin.py", line 20, in save_model
+    return super(UserAdmin,self).save_model(request, obj, form, change)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1081, in save_model
+    obj.save()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\base.py", line 746, in save
+    force_update=force_update, update_fields=update_fields)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\base.py", line 784, in save_base
+    force_update, using, update_fields,
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\base.py", line 887, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\base.py", line 926, in _do_insert
+    using=using, raw=raw,
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\models\sql\compiler.py", line 1384, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\db\backends\mysql\base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1062, "Duplicate entry '' for key 'openid'")
+2020-04-02 18:54:22,043 [Thread-1: 13752]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 ERROR - "POST /admin/juheapp/user/add/ HTTP/1.1" 500 264140
+2020-04-02 18:57:20,403 [Thread-1: 22560]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 WARNING - Not Found: /
+2020-04-02 18:57:20,404 [Thread-1: 22560]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 WARNING - "GET / HTTP/1.1" 404 2243
+2020-04-02 18:57:32,642 [Thread-1: 22560]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 ERROR - Internal Server Error: /admin/juheapp/user/add/
+Traceback (most recent call last):
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\sites.py", line 231, in inner
+    return view(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1638, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1522, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\contrib\admin\options.py", line 1565, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "D:\PycharmProjects\dj_three\helloword\juheapp\admin.py", line 22, in save_model
+    obj.openid = obj.nickname + str(random.randint(1, 1000))
+AttributeError: 'User' object has no attribute 'nickname'
+2020-04-02 18:57:32,646 [Thread-1: 22560]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 ERROR - "POST /admin/juheapp/user/add/ HTTP/1.1" 500 116624

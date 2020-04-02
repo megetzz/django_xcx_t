@@ -47,8 +47,8 @@ class User(models.Model):
 
     menu = models.ManyToManyField(App)
 
-    # def __str__(self):
-    #     return self.nickName
+    def __str__(self):
+        return self.nickName
 
     class Meta:
 

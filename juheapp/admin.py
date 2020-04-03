@@ -29,3 +29,14 @@ class UserAdmin(admin.ModelAdmin):
 
 
 
+# admin
+# 后台管理模块
+# createsuperuser
+# modes -->  定义模型的地方
+# admin -->  把模型注册到后台的地方,不注册不在后台显示这个类
+# 可读性好 --> 重写模型中的str
+
+# useradmin 类(继承自admin.ModelAdmin)中 fields exclude... 控制后台显示不显示某种字段
+
+# 自定义某些字段的生成规则:
+    # 重写useradmin中的 save_model()方法

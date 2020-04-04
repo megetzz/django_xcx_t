@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-APPEND_SLASH=False
+APPEND_SLASH = False
 ROOT_URLCONF = 'helloword.urls'
 UPLOAD_PIC_DIR = os.path.join(BASE_DIR, 'resource', 'uploadpic')
 TEMPLATES = [
@@ -104,7 +104,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -139,7 +138,7 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-os.environ['DJANGO_SETTINGS_MODULE']='helloword.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'helloword.settings'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
@@ -149,57 +148,77 @@ STATICFILES_DIRS = (
 STATIC_ROOT_SELF = os.path.join(BASE_DIR, 'static')
 
 # SESSION_COOKIE_AGE session 过期时间
-SESSION_COOKIE_AGE = 60*1*24
-
+SESSION_COOKIE_AGE = 60 * 1 * 24
 
 # 日志
 LOGGING = {
-    'version':1,
+    'version': 1,
     # 格式器
-    'formatters':{
-        'standard':{
+    'formatters': {
+        'standard': {
             'format': '%(asctime)s [%(threadName)s: %(thread)d]'
                       '%(pathname)s:%(funcName)s:%(lineno)d %(levelname)s - %(message)s'
         },
-        'myformat':{
+        'myformat': {
             'format': '%(asctime)s '
                       '%(pathname)s:%(funcName)s:%(lineno)d %(levelname)s - %(message)s'
 
         }
     },
     # 过滤器
-    'filters':{
-        'xxx':{
-            '()':'ops.XXXFilter'
+    'filters': {
+        'xxx': {
+            '()': 'ops.XXXFilter'
         }
     },
-    'handlers':{
-    #     控制台输出
-        'consile_handler':{
-            'level':'INFO',
-            'class':'logging.StreamHandler',
-            'formatter':'standard'
+    'handlers': {
+        #     控制台输出
+        'consile_handler': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard'
         },
-    # 输出到文件
-        'file_handler':{
+        # 输出到文件
+        'file_handler': {
             # DEBUG  Warning ERROR
-            'level':'WARNING',
-            'class':'logging.handlers.RotatingFileHandler',
-            #todo  可能日志不存在
-            'filename':os.path.join(BASE_DIR,'ops.log'),
-            'maxBytes':100*1024*1024,
-            'backupCount':3,
-            'formatter':'standard',
-            'encoding':'utf-8'
+            'level': 'WARNING',
+            'class': 'logging.handlers.RotatingFileHandler',
+            # todo  可能日志不存在
+            'filename': os.path.join(BASE_DIR, 'ops.log'),
+            'maxBytes': 100 * 1024 * 1024,
+            'backupCount': 3,
+            'formatter': 'standard',
+            'encoding': 'utf-8'
         }
     },
-    'loggers':{
-        'django':{
-            'handlers':['consile_handler','file_handler'],
-            'filters':['xxx'],
-            'level':'DEBUG'
-      }
+    'loggers': {
+        'django': {
+            'handlers': ['consile_handler', 'file_handler'],
+            'filters': ['xxx'],
+            'level': 'DEBUG'
+        }
     },
+}
 
 
+# 缓存模块
+CACHES = {
+    'default': {
+        # 框架缓存
+        # 1. MemCache
+        # 'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        # 'LOCATION': '127.0.0.1:11211',
+
+        # 2. DB Cache
+        # 'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        # 'LOCATION': 'my_cache_table',
+
+        # 3. Filesystem Cache
+        # 'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        # 'LOCATION': '/var/tmp/django_cache',
+
+        # 4. Local Mem Cache
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'backend-cache'
     }
+}

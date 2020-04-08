@@ -272,3 +272,11 @@ Traceback (most recent call last):
     obj.openid = obj.nickname + str(random.randint(1, 1000))
 AttributeError: 'User' object has no attribute 'nickname'
 2020-04-02 18:57:32,646 [Thread-1: 22560]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 ERROR - "POST /admin/juheapp/user/add/ HTTP/1.1" 500 116624
+2020-04-08 10:06:54,607 [Thread-1: 12876]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 WARNING - Not Found: /
+2020-04-08 10:06:54,609 [Thread-1: 12876]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 WARNING - "GET / HTTP/1.1" 404 2243
+2020-04-08 10:06:55,268 [Thread-1: 12876]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 WARNING - Not Found: /favicon.ico
+2020-04-08 10:06:55,269 [Thread-1: 12876]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 WARNING - "GET /favicon.ico HTTP/1.1" 404 2294
+2020-04-08 10:56:30,536 [Thread-3: 27252]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 WARNING - Not Found: /
+2020-04-08 10:56:30,539 [Thread-3: 27252]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 WARNING - "GET / HTTP/1.1" 404 2243
+2020-04-08 10:56:45,479 [Thread-3: 27252]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 WARNING - Not Found: /blog/index
+2020-04-08 10:56:45,480 [Thread-3: 27252]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 WARNING - "GET /blog/index HTTP/1.1" 404 3495

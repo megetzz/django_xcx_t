@@ -22,10 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2__n!4^zb1n=f(0+3xkbrask0(2n(#8-9h!-kcixn#x3+=+2++'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     # 自己的app的apps的文件里的类
     'app1.apps.App1Config',
     'blog.apps.BlogConfig',
-    'juheapp.apps.JuheappConfig'
+    'juheapp.apps.JuheappConfig',
+    'django_crontab'
 ]
 
 MIDDLEWARE = [
@@ -53,9 +54,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 APPEND_SLASH = False
+
 ROOT_URLCONF = 'helloword.urls'
+
 UPLOAD_PIC_DIR = os.path.join(BASE_DIR, 'resource', 'uploadpic')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -101,8 +106,8 @@ DATABASES = {
         'PASSWORD': '258000',
         'HOST': '127.0.0.1',
         'PORT': '3306',
-        'OPTIONS':{
-            'autocommit':True
+        'OPTIONS': {
+            'autocommit': True
         },
     }
 }
@@ -203,7 +208,6 @@ LOGGING = {
     },
 }
 
-
 # 缓存模块
 CACHES = {
     'default': {
@@ -225,3 +229,11 @@ CACHES = {
         'LOCATION': 'backend-cache'
     }
 }
+
+# crontab常见与linux和unix
+
+CRONJOBS = [
+    ('*/2 * * * *', 'corn.jobs.demo'),
+    ('*/1 * * * *', 'echo "xxx">/dev/null')
+    # ('*/3 * * * *', '/bin/ls'),
+]

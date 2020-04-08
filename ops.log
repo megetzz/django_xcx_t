@@ -272,6 +272,7 @@ Traceback (most recent call last):
     obj.openid = obj.nickname + str(random.randint(1, 1000))
 AttributeError: 'User' object has no attribute 'nickname'
 2020-04-02 18:57:32,646 [Thread-1: 22560]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 ERROR - "POST /admin/juheapp/user/add/ HTTP/1.1" 500 116624
+<<<<<<< HEAD
 2020-04-08 10:06:54,607 [Thread-1: 12876]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 WARNING - Not Found: /
 2020-04-08 10:06:54,609 [Thread-1: 12876]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 WARNING - "GET / HTTP/1.1" 404 2243
 2020-04-08 10:06:55,268 [Thread-1: 12876]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 WARNING - Not Found: /favicon.ico
@@ -280,3 +281,33 @@ AttributeError: 'User' object has no attribute 'nickname'
 2020-04-08 10:56:30,539 [Thread-3: 27252]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 WARNING - "GET / HTTP/1.1" 404 2243
 2020-04-08 10:56:45,479 [Thread-3: 27252]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 WARNING - Not Found: /blog/index
 2020-04-08 10:56:45,480 [Thread-3: 27252]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 WARNING - "GET /blog/index HTTP/1.1" 404 3495
+=======
+2020-04-08 10:47:02,657 [Thread-1: 139875364210432]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/utils/log.py:log_response:228 WARNING - Not Found: /
+2020-04-08 10:47:02,663 [Thread-1: 139875364210432]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/core/servers/basehttp.py:log_message:157 WARNING - "GET / HTTP/1.1" 404 2243
+2020-04-08 10:47:04,980 [Thread-1: 139875364210432]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/utils/log.py:log_response:228 WARNING - Not Found: /
+2020-04-08 10:47:04,990 [Thread-1: 139875364210432]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/core/servers/basehttp.py:log_message:157 WARNING - "GET / HTTP/1.1" 404 2243
+2020-04-08 10:47:12,194 [Thread-1: 139875364210432]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/utils/log.py:log_response:228 WARNING - Not Found: /blog
+2020-04-08 10:47:12,195 [Thread-1: 139875364210432]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/core/servers/basehttp.py:log_message:157 WARNING - "GET /blog HTTP/1.1" 404 2273
+2020-04-08 10:47:16,412 [Thread-1: 139875364210432]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/utils/log.py:log_response:228 WARNING - Not Found: /blog/
+2020-04-08 10:47:16,412 [Thread-1: 139875364210432]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/core/servers/basehttp.py:log_message:157 WARNING - "GET /blog/ HTTP/1.1" 404 3480
+2020-04-08 10:47:23,674 [Thread-1: 139875364210432]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/utils/log.py:log_response:228 WARNING - Not Found: /blog/index
+2020-04-08 10:47:23,675 [Thread-1: 139875364210432]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/core/servers/basehttp.py:log_message:157 WARNING - "GET /blog/index HTTP/1.1" 404 3495
+2020-04-08 10:48:16,491 [Thread-2: 139639520229120]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/utils/log.py:log_response:228 WARNING - Not Found: /api/v1.0/
+2020-04-08 10:48:16,492 [Thread-2: 139639520229120]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/core/servers/basehttp.py:log_message:157 WARNING - "GET /api/v1.0/ HTTP/1.1" 404 2502
+2020-04-08 10:48:23,692 [Thread-2: 139639520229120]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/utils/log.py:log_response:228 ERROR - Internal Server Error: /api/v1.0/apps/
+Traceback (most recent call last):
+  File "/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/pluto/django_xcx_t/juheapp/views.py", line 178, in apps
+    with open(filepath,'r',encoding='utf8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\PycharmProjects\\dj_three\\helloword\\helloword\\myappconfig.yaml'
+2020-04-08 10:48:23,693 [Thread-2: 139639520229120]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/core/servers/basehttp.py:log_message:157 ERROR - "GET /api/v1.0/apps/ HTTP/1.1" 500 72324
+2020-04-08 10:50:04,798 [Thread-1: 139650133341952]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/utils/log.py:log_response:228 WARNING - Not Found: /api/v1.0/apps/jokes/
+2020-04-08 10:50:04,798 [Thread-1: 139650133341952]/home/pluto/PycharmProjects/py1115/venv/lib/python3.6/site-packages/django/core/servers/basehttp.py:log_message:157 WARNING - "GET /api/v1.0/apps/jokes/ HTTP/1.1" 404 5171
+2020-04-08 10:57:23,282 [Thread-1: 139731623696128]/usr/local/lib/python3.6/dist-packages/django/utils/log.py:log_response:228 WARNING - Not Found: /
+2020-04-08 10:57:23,286 [Thread-1: 139731623696128]/usr/local/lib/python3.6/dist-packages/django/core/servers/basehttp.py:log_message:157 WARNING - "GET / HTTP/1.1" 404 2243
+>>>>>>> debf20a76eacde21621b678b2cb076d76f384d79

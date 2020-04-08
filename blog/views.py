@@ -54,7 +54,7 @@ def index(request):
     p=Paginator(articles,1)     #每页几篇文章
     page_num=p.num_pages
 
-    print('几页?',page_num)
+    # print('几页?',page_num)
 
     # 获取第几页的文章
     page_article_list=p.page(page)

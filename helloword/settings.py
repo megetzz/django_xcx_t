@@ -22,7 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2__n!4^zb1n=f(0+3xkbrask0(2n(#8-9h!-kcixn#x3+=+2++'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+#DEBUG = True
+
 # DEBUG = True
+
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
@@ -229,7 +232,6 @@ CACHES = {
         'LOCATION': 'backend-cache'
     }
 }
-
 # crontab常见与linux和unix
 
 CRONJOBS = [
@@ -237,3 +239,4 @@ CRONJOBS = [
     ('*/1 * * * *', 'echo "xxx">/dev/null'),
     ('*/3 * * * *', '/bin/ls'),
 ]
+

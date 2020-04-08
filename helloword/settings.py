@@ -234,6 +234,6 @@ CACHES = {
 
 CRONJOBS = [
     ('*/2 * * * *', 'corn.jobs.demo'),
-    ('*/1 * * * *', 'echo "xxx">/dev/null')
-    # ('*/3 * * * *', '/bin/ls'),
+    ('*/1 * * * *', 'echo "xxx">/dev/null'),
+    ('*/3 * * * *', '/bin/ls'),
 ]

@@ -343,3 +343,15 @@ Traceback (most recent call last):
     self.request
 AttributeError: 'TestMiddle' object has no attribute 'request'
 2020-04-09 12:11:51,646 [Thread-2: 15180]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 ERROR - "GET /favicon.ico HTTP/1.1" 500 145
+2020-04-09 17:27:05,098 [Thread-1: 18648]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\utils\log.py:log_response:228 ERROR - Internal Server Error: /api/v1.0/apps/
+Traceback (most recent call last):
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\PycharmProjects\dj_three\helloword\juheapp\views.py", line 178, in apps
+    with open(filepath,'r',encoding='utf8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/pluto/django_xcx_t/helloword/myappconfig.yaml'
+2020-04-09 17:27:05,101 [Thread-1: 18648]D:\ANACONDA_1\envs\fdjango\lib\site-packages\django\core\servers\basehttp.py:log_message:157 ERROR - "GET /api/v1.0/apps/ HTTP/1.1" 500 145

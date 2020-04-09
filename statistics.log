@@ -1,0 +1,34 @@
+2020-04-09 17:10:48,441 0.007979393005371094
+2020-04-09 17:10:48,653 0.0009965896606445312
+2020-04-09 17:10:51,127 0.018567800521850586
+2020-04-09 17:10:51,520 0.0009989738464355469
+2020-04-09 17:17:01,859 {'used_time': 0.00997304916381836, 'path': '/'}
+2020-04-09 17:17:02,271 {'used_time': 0.0, 'path': '/favicon.ico'}
+2020-04-09 17:17:18,398 {'used_time': 0.0, 'path': '/blog/index'}
+2020-04-09 17:17:18,665 {'used_time': 0.000997304916381836, 'path': '/favicon.ico'}
+2020-04-09 17:17:21,141 {'used_time': 0.01906299591064453, 'path': '/blog/index/'}
+2020-04-09 17:17:21,554 {'used_time': 0.0009953975677490234, 'path': '/favicon.ico'}
+2020-04-09 17:18:49,347 {'used_time': 0.008032798767089844, 'path': '/blog/detail/1'}
+2020-04-09 17:18:49,584 {'used_time': 0.0, 'path': '/favicon.ico'}
+{'start_time': 1586424040.8796327, 'used_time': 0.019945383071899414, 'path': '/blog/detail/2'}
+{'start_time': 1586424041.1151972, 'used_time': 0.0009987354278564453, 'path': '/favicon.ico'}
+{'start_time': 1586424075.7496412, 'used_time': 0.020978450775146484, 'path': '/blog/detail/3', 'end_time': 1586424075.7706196}
+{'start_time': 1586424075.989869, 'used_time': 0.0009975433349609375, 'path': '/favicon.ico', 'end_time': 1586424075.9908667}
+{'start_time': 1586424242.681061, 'used_time': 0.012964963912963867, 'path': '/blog/detail/4', 'full_path': '/blog/detail/4', 'end_time': 1586424242.694026}
+{'start_time': 1586424242.9155474, 'used_time': 0.0010323524475097656, 'path': '/favicon.ico', 'full_path': '/favicon.ico', 'end_time': 1586424242.9165797}
+{'start_time': 1586424270.9907868, 'used_time': 0.0, 'path': '/api/v1.0/apps', 'full_path': '/api/v1.0/apps', 'end_time': 1586424270.9907868}
+{'start_time': 1586424271.2219954, 'used_time': 0.0, 'path': '/favicon.ico', 'full_path': '/favicon.ico', 'end_time': 1586424271.2219954}
+{'start_time': 1586424276.1691375, 'used_time': 0.001994609832763672, 'path': '/api/v1.0/apps/weather/', 'full_path': '/api/v1.0/apps/weather/', 'end_time': 1586424276.171132}
+{'start_time': 1586424276.3277152, 'used_time': 0.0, 'path': '/favicon.ico', 'full_path': '/favicon.ico', 'end_time': 1586424276.3277152}
+{'start_time': 1586424410.1181223, 'used_time': 0.007075786590576172, 'path': '/api/v1.0/apps/jokes/', 'end_time': 1586424410.1251981}
+{'start_time': 1586424410.3331811, 'used_time': 0.000997781753540039, 'path': '/favicon.ico', 'end_time': 1586424410.334179}
+{'start_time': 1586424425.0970592, 'used_time': 0.002993345260620117, 'path': '/api/v1.0/apps/', 'end_time': 1586424425.1000526}
+{'start_time': 1586424425.2946656, 'used_time': 0.0009968280792236328, 'path': '/favicon.ico', 'end_time': 1586424425.2956624}
+{'start_time': 1586424523.9935753, 'used_time': 0.007979393005371094, 'path': '/api/v1.0/apps/', 'end_time': 1586424524.0015547}
+{'start_time': 1586424524.2050102, 'used_time': 0.003988742828369141, 'path': '/favicon.ico', 'end_time': 1586424524.208999}
+{'start_time': 1586424542.1962047, 'used_time': 0.0, 'path': '/api/v1.0/apps/jokes/', 'end_time': 1586424542.1962047}
+{'start_time': 1586424542.3926787, 'used_time': 0.0009975433349609375, 'path': '/favicon.ico', 'end_time': 1586424542.3936763}
+{'start_time': 1586424547.1530282, 'used_time': 0.0, 'path': '/api/v1.0/apps/joke/', 'end_time': 1586424547.1530282}
+{'start_time': 1586424547.2926884, 'used_time': 0.0009634494781494141, 'path': '/favicon.ico', 'end_time': 1586424547.2936518}
+{'start_time': 1586424552.0457053, 'used_time': 0.0009963512420654297, 'path': '/api/v1.0/apps/weather/', 'end_time': 1586424552.0467017}
+{'start_time': 1586424552.1810231, 'used_time': 0.0009987354278564453, 'path': '/favicon.ico', 'end_time': 1586424552.1820219}

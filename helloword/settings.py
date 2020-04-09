@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2__n!4^zb1n=f(0+3xkbrask0(2n(#8-9h!-kcixn#x3+=+2++'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+# DEBUG = True
 
 # DEBUG = True
 
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     # 'django.middleware.csrf.CsrfViewMiddleware',
     'mymiddleware.mymiddleware.TestMiddle',
+    'mymiddleware.mymiddleware.StatisticsMiddle',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -176,6 +177,10 @@ LOGGING = {
             'format': '%(asctime)s '
                       '%(pathname)s:%(funcName)s:%(lineno)d %(levelname)s - %(message)s'
 
+        },
+        'statistics': {
+            'format':  '%(message)s'
+
         }
     },
     # 过滤器
@@ -202,6 +207,17 @@ LOGGING = {
             'backupCount': 3,
             'formatter': 'standard',
             'encoding': 'utf-8'
+        },
+        'statistics_handler': {
+            # DEBUG  Warning ERROR
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            # todo  可能日志不存在
+            'filename': os.path.join(BASE_DIR, 'statistics.log'),
+            'maxBytes': 100 * 1024 * 1024,
+            'backupCount': 3,
+            'formatter': 'statistics',
+            'encoding': 'utf-8'
         }
     },
     'loggers': {
@@ -209,8 +225,15 @@ LOGGING = {
             'handlers': ['consile_handler', 'file_handler'],
             'filters': ['xxx'],
             'level': 'DEBUG'
+        },
+
+        'statistics': {
+            'handlers': ['statistics_handler', 'file_handler'],
+            'level': 'DEBUG'
         }
+
     },
+
 }
 
 # 缓存模块
@@ -243,6 +266,7 @@ CRONJOBS = [
 ]
 
 from helloword.secret_settings import email_key
+
 # Email config  邮箱设置
 # QQ邮箱 SMTP 服务器地址:
 EMAIL_HOST = 'smtp.qq.com'

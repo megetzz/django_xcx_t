@@ -174,7 +174,10 @@ class ImageText(View,ResponseMixin,XxxxxMixin):
 def apps(request):
     if request.method == 'POST':
         return HttpResponse('逗你玩..')
-    filepath = r'/home/pluto/django_xcx_t/helloword/myappconfig.yaml'
+    # linux
+    # filepath = r'/home/pluto/django_xcx_t/helloword/myappconfig.yaml'
+    # win
+    filepath = r'D:\PycharmProjects\dj_three\helloword\helloword\myappconfig.yaml'
     with open(filepath,'r',encoding='utf8') as f:
         res = yaml.load(f,Loader=yaml.FullLoader)
     return JsonResponse(res,safe=False)

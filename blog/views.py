@@ -51,7 +51,7 @@ def index(request):
     top3_article_list = Article.objects.order_by('-publist_date')[:3]
     # top3_article_list=Article.objects.order_by('-publist_date')[:3]
     # Paginator  分页的
-    p=Paginator(articles,1)     #每页几篇文章
+    p=Paginator(articles,3)     #每页几篇文章
     page_num=p.num_pages
 
     # print('几页?',page_num)

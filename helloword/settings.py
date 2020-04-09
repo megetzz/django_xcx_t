@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'app1.apps.App1Config',
     'blog.apps.BlogConfig',
     'juheapp.apps.JuheappConfig',
-    'django_crontab'
+    # 只能在Linux上运行
+    # 'django_crontab'
 ]
 
 MIDDLEWARE = [
@@ -51,8 +52,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     # 'django.middleware.csrf.CsrfViewMiddleware',
-    # 'mymiddleware.mymiddleware.TestMiddle',
-    # 'mymiddleware.mymiddleware.StatisticsMiddle',
+    'mymiddleware.mymiddleware.TestMiddle',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -105,8 +105,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'test',
-        'USER': 'debian-sys-maint',
-        'PASSWORD': '8PipFkR0fXPT7Bat',
+        # 'USER': 'debian-sys-maint',
+        'USER': 'root',
+        # 'PASSWORD': '8PipFkR0fXPT7Bat',
+        'PASSWORD': '258000',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
@@ -240,3 +242,18 @@ CRONJOBS = [
     ('*/3 * * * *', '/bin/ls'),
 ]
 
+from helloword.secret_settings import email_key
+# Email config  邮箱设置
+# QQ邮箱 SMTP 服务器地址:
+EMAIL_HOST = 'smtp.qq.com'
+# 端口  附加码 25/
+# EMAIL_PORT = 465
+EMAIL_PORT = 25
+# 发送邮件的邮箱
+EMAIL_HOST_USER = 'ma.1971250916@qq.com'
+# 在邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = email_key
+# 开启TLS
+EMAIL_USE_TLS = True
+# 收件人看到的发件人
+EMAIL_FROM = 'ma.1971250916@qq.com'

@@ -1,3 +1,5 @@
+# 支持类模块
+
 from logging import Filter
 class XXXFilter(Filter):
     def filter(self, record):
